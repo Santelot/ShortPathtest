@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-4').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+    <!-- Actividad 1: Saludo y Ritual Gnius Club -->
+    <div id="activity-1" class="activity">
+        <div class="banner" onclick="toggleContent('saludo')">
+            <div class="title">
+                <span>📚 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+                <span>⏰ Tiempo: 2.5 minutos</span>
+            </div>
+            <div class="subtitle">Dar la bienvenida y preparar el ambiente</div>
+        </div>
+        <div id="saludo" class="content">
+            <div class="section">
+                <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Gnius Club"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Buenos días, jóvenes desarrolladores de apps. Hoy vamos a explorar una herramienta increíble llamada Glide, que nos permitirá crear aplicaciones de manera rápida y sencilla, incluso con IA.</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 2 (1.0 minutos): Proyectar Diapositiva 3 "¿Cómo están?"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Antes de empezar nuestro viaje por Glide, quiero saber cómo se sienten hoy. Si están listos para aprender algo nuevo y emocionante, levanten la mano derecha. Si sienten que necesitan un poco de energía, levanten la izquierda.</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 y guiar a los estudiantes a realizar el ritual de bienvenida.</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Juntémos las manos en agradecimiento por la oportunidad de aprender y crear algo nuevo hoy.</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Hoy tenemos tres objetivos en nuestra misión: entender qué es Glide, explorar sus capacidades y crear una aplicación simple utilizando su IA. ¡Vamos a ello!</div>
+            </div>
+        </div>
+    </div>
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">
+            <span>📚 Actividad 2: Innovación del Día (3 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Introducción a una aplicación innovadora</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Innovación del Día"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de sumergirnos en Glide, quiero mostrarles una aplicación innovadora que está revolucionando la manera en que interactuamos con el contenido: Muse. Muse es una aplicación que permite a los usuarios organizar sus ideas y notas en un espacio visualmente interactivo, usando gestos intuitivos para navegar y organizar la información.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 7 "Video de Muse"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a ver un breve video que muestra cómo Muse puede transformar la manera en que gestionamos nuestras ideas y notas. Presten atención a las características clave y piensen en cómo podrían utilizar algo similar en sus propios proyectos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (3 minutos): Proyectar Diapositiva 8 "Características de Muse"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, discutamos algunas de las características más impresionantes de Muse. ¿Qué les pareció? ¿Cómo creen que una herramienta como Muse podría ayudarlos en sus estudios y proyectos?</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (8 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>📚 Actividad 3: Brain Gym (8 pasos)</span>
+            <span>⏰ Tiempo: 8 minutos</span>
+        </div>
+        <div class="subtitle">Explorar las capacidades y usos de Glide</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 9 "Introducción a Glide"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos a aprender sobre Glide, una herramienta poderosa que nos permite crear aplicaciones sin necesidad de programar. Recuerden poner atención porque dentro de lo que voy a explicar hay un Easter Egg. Al final de la clase voy a lanzar una pregunta y quien la responda, ganará un mon-e.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 10 "¿Qué es Glide?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Glide es una plataforma que nos permite crear aplicaciones móviles y web utilizando datos de Google Sheets y otras fuentes sin necesidad de escribir código. Es una herramienta increíble para quienes desean desarrollar aplicaciones de manera rápida y sencilla.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 11 "Capacidades de Glide"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Las capacidades de Glide son impresionantes. Puedes integrar datos de Google Sheets, utilizar plantillas predefinidas, personalizar el diseño y añadir funcionalidades avanzadas con facilidad. Glide también ofrece integración con IA, permitiendo crear aplicaciones inteligentes que pueden automatizar tareas y mejorar la eficiencia. Además, Glide es ideal para prototipado rápido, gestión de proyectos, seguimiento de inventarios, y creación de herramientas personalizadas para empresas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 12 "Casos de Uso de Glide"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Glide se utiliza en una variedad de casos. Por ejemplo, en el campo de la educación, los profesores pueden crear aplicaciones para gestionar la asistencia y el rendimiento de los estudiantes. En negocios, los emprendedores pueden desarrollar herramientas para seguimiento de ventas y gestión de clientes. Incluso en la vida diaria, podrías crear una app para organizar tus tareas diarias, planificar tus entrenamientos o gestionar tus finanzas personales. La flexibilidad de Glide permite adaptarse a diversas necesidades y proyectos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 13 "Ejemplos Profesionales"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a ver algunos ejemplos específicos de cómo Glide puede ser útil en diferentes campos profesionales: <br> - En medicina, los doctores pueden crear una app para seguimiento de pacientes y citas. <br> - En el marketing, los equipos pueden desarrollar una herramienta para monitorizar campañas y analizar resultados. <br> - En la logística, las empresas pueden diseñar una aplicación para seguimiento de entregas y gestión de inventarios. Glide ofrece soluciones rápidas y eficaces para una amplia gama de profesiones.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1 minuto): Proyectar Diapositiva 14 "Limitaciones de Glide"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Aunque Glide es una herramienta increíble, tiene sus limitaciones. No es ideal para aplicaciones que esperan tener miles de usuarios o que necesitan funcionalidades muy específicas y avanzadas. Sin embargo, es perfecta para proyectos personales, pequeñas empresas, y soluciones internas dentro de organizaciones. Es una excelente opción para aquellos que buscan crear aplicaciones útiles sin tener que aprender a programar.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar Diapositiva 15 "Recapitulación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Glide es una herramienta poderosa y versátil que puede ser utilizada en una variedad de contextos. Las ventajas que ofrece para el prototipado rápido y la creación de aplicaciones funcionales son enormes. ¡Espero que estén emocionados por comenzar a usar Glide y explorar todo lo que pueden crear con esta herramienta!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (0.5 minutos): Proyectar Diapositiva 16 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Y con esto hemos avanzado en nuestro primer objetivo de la misión de hoy.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (7 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>📚 Actividad 4: State Change (7 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Activación física rápida para recargar energías</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 17 "State Change"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora que hemos aprendido sobre Glide, vamos a hacer un breve ejercicio para activar nuestro cuerpo y mente antes de pasar al siguiente reto.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 18 "Coreografía Rápida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a hacer una actividad divertida llamada "Coreografía Rápida". Nos levantamos de nuestros asientos y vamos a seguir una breve secuencia de movimientos. Aquí están las acciones y sus números asignados: <br> 1. Aplaudir dos veces. <br> 2. Dar un giro completo. <br> 3. Saltar en su lugar tres veces. <br> 4. Tocar los hombros con las manos. <br> Vamos a seguir algunas secuencias que les iré diciendo.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 19 "Realizar la primera secuencia"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a empezar con la primera secuencia: <br> 1 - 2 - 3 - 4. ¡Adelante!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 20 "Realizar la segunda secuencia"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos con la segunda secuencia: <br> 4 - 1 - 3 - 2. ¡Muy bien!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 21 "Realizar la tercera secuencia"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora seguimos con la tercera secuencia: <br> 2 - 4 - 1 - 3 - 1 - 4. ¡Casi lo logran!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 22 "Realizar la cuarta secuencia"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Última secuencia: <br> 3 - 2 - 4 - 1 - 4 - 2 - 1 - 1 - 1. ¡Excelente trabajo!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (0.5 minutos): Proyectar Diapositiva 23 "Listos para Continuar"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Muy bien! Ahora que estamos energizados y enfocados, estamos listos para continuar con nuestro desafío de Glide.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 (2 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>📚 Actividad 5: Team Gnius (2 pasos)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Formación de equipos para el próximo reto</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 24 "Team Gnius"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El reto que nos toca estos días se va a hacer en parejas. Así que les voy a dar 30 segundos para que decidan con quién van a trabajar.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 25 "Cronómetro de 30 segundos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6 (10 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>📚 Actividad 6: Challenge (10 pasos)</span>
+            <span>⏰ Tiempo: 20 minutos</span>
+        </div>
+        <div class="subtitle">Poner en práctica los conocimientos adquiridos en Glide</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 26 "Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos a poner en práctica lo que hemos aprendido configurando una cuenta en Glide, explorando la interfaz y creando una aplicación simple utilizando la IA de Glide.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 27 "Configurar Cuenta"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a empezar configurando una cuenta en Glide. Vayan a glideapps.com. Verán un letrero que dice "Make your business more efficient with custom apps" y un botón azul que dice "Start for free". Hagan clic en "Start for free".</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 28 "Iniciar Sesión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Al hacer clic en "Start for free", se abrirá una nueva pestaña con dos opciones: iniciar sesión con Google o entrar con correo. Pueden usar cualquiera de las dos, pero les recomendamos entrar con Google.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar Diapositiva 29 "Completar Registro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Si entraron con correo, lo primero que les pedirá es su nombre. Luego, seleccionen "escuela" en cómo se enteraron de Glide y "escuela" en para qué están creando aplicaciones. Por último, seleccionen "Soy estudiante" en la opción que pide información sobre ustedes.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar Diapositiva 30 "Creador de Apps con IA"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Si hicieron todos los pasos correctamente, los llevará directamente a un espacio donde hay un teléfono y nos pregunta lo que estamos construyendo. Este es el creador de apps con IA de Glide, y lo usaremos hoy para que puedan experimentar de primera mano el poder de Glide.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Proyectar Diapositiva 31 "Crear App para Negocio"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El challenge de hoy es crear una aplicación para administrar un negocio. Pueden elegir el negocio que quieran: una pizzería, una tienda de velas, una tienda de autoservicio, etc. Diseñen muy bien su prompt con base en las necesidades que se imaginan podría tener ese negocio. Piensen en qué funcionalidades serían útiles y cómo podrían facilitar la gestión del negocio. Ahora tienen 10 minutos para trabajar en la creación de su aplicación en Glide. Recuerden que el objetivo es familiarizarse con la herramienta y explorar sus capacidades. ¡Manos a la obra!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (10 minutos): Proyectar Diapositiva 32 "Crear App para Negocio - Tiempo de Trabajo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (3 minutos): Proyectar Diapositiva 33 "Compartir Aplicaciones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a compartir las aplicaciones que han creado. Vamos a intercambiar aplicaciones con el equipo de al lado para que nos den su opinión sobre la app. Tienen 3 minutos para intercambiar y compartir.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (0.5 minutos): Proyectar Diapositiva 34 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Felicitaciones, hemos logrado los objetivos de nuestra misión al configurar una cuenta en Glide, explorar la interfaz y crear una aplicación simple utilizando la IA. Espero hayan aprendido sobre cómo usar Glide nos puede permitir crear soluciones rápidas y efectivas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (0.5 minutos): Proyectar Diapositiva 35 "You've got mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8 (1 paso) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>📚 Actividad 8: Honor de Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Cerrar la clase y preparar el espacio para el próximo grupo</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 39 y reproducir la animación de honor de dojo</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Recuerden cerrar sus sillas, recoger sus cosas y acomodar el laboratorio para que pueda recibir la siguiente tanda de genios.</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+</body>
+</html>
